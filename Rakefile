@@ -375,7 +375,7 @@ task :ci do
   end
   if ENV['URHO3D_LINT']
     lint_err = File.read('/tmp/lint.err')
-    puts "\nLinter result:\n\n#{lint_err}\n"; $stdout.flush
+    #puts "\nLinter result:\n\n#{lint_err}\n"; $stdout.flush
     # Exclude ThirdParty and generated code
     filtered_lint_err = lint_err.scan(/(.+:\d+:\d+:.+\[.+\])/).flatten.select { |it| it =~ /\[\w+-.+\]/ }.reject { |it| it =~ /ThirdParty|generated|HashMap\.h.+?clang-analyzer-core.CallAndMessag/ }
     unless filtered_lint_err.empty?
